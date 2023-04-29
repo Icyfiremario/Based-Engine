@@ -17,7 +17,7 @@ class ProjectileComponent : public Component
         void init() override
         {
             transform = &entity->getComponent<TransformComponent>();
-            transform->velocity - velocity;
+            transform->velocity = velocity;
         }
 
         void update() override
