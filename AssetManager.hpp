@@ -14,6 +14,10 @@ class AssetManager
         AssetManager(Manager* man);
         ~AssetManager();
 
+        //GameObjects
+        void CreateProjectile(Vector2D pos, int range, int speed, std::string id);
+        
+        //texture stuffs
         void AddTexture(std::string id, const char* path);
         SDL_Texture* GetTexture(std::string id);
 

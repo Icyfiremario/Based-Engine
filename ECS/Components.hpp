@@ -8,6 +8,6 @@
 #include "ColliderComponent.hpp"
 #include "TileCompnent.hpp"
 #include "Animation.hpp"
-#include "Projectile.hpp"
+#include "ProjectileComponent.hpp"
 
 #endif /* Components_hpp */
