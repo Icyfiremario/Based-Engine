@@ -67,7 +67,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     //init game objects (player, enemies, map, etc)
 
     player.addComponent<TransformComponent>(2);
-    player.addComponent<SpriteComponent>("assets/player_idle.png", true);
+    player.addComponent<SpriteComponent>("assets/player_anims.png", true);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("player");
     player.addGroup(groupPlayers);
