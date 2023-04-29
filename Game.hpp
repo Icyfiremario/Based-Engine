@@ -5,9 +5,9 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <vector>
-#include "AssetManager.hpp"
 
 
+class AssetManager;
 class ColliderComponent;
 
 class Game
@@ -20,9 +20,10 @@ class Game
 
         void handleEvents();
         void update();
+        bool running() {return isRunning;}
         void render();
         void clean();
-        bool running() {return isRunning;}
+        
 
         static SDL_Renderer *renderer;
         static SDL_Event event;

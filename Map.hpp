@@ -8,7 +8,7 @@ class Map
 {
     public:
 
-        Map(std::string tId, int ms, int ts);
+        Map(std::string tID, int ms, int ts);
         ~Map();
 
         void AddTile(int srcX, int srcY, int xpos, int ypos);

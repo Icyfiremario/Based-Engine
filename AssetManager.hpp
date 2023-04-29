@@ -19,9 +19,8 @@ class AssetManager
 
     private:
 
+        std::map<std::string, SDL_Texture*> textures;
         Manager* manager;
-        std::map<std::string, SDL_Texture*> textures; 
 };
-
 
 #endif /* AssetManager_hpp */
