@@ -8,10 +8,15 @@ class Map
 {
     public:
 
-        Map();
+        Map(const char* mfp, int ms, int ts);
         ~Map();
-
-        static void LoadMap(std::string path, int sizeX, int sizeY);
+        void AddTile(int srcX, int srcY, int xpos, int ypos);
+        void LoadMap(std::string path, int sizeX, int sizeY);
+    private:
+        const char* mapfilePath;
+        int mapScale;
+        int tileSize;
+        int scaledSize;
 
 };
 

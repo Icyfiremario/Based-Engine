@@ -17,6 +17,8 @@ struct TransformComponent : public Component
 
         int speed = 3;
 
+        bool blocked = false;
+
         TransformComponent()
         {
             posititon.Zero();
@@ -24,8 +26,7 @@ struct TransformComponent : public Component
 
         TransformComponent(int sc)
         {
-            posititon.x = 400;
-            posititon.y = 320;
+            posititon.Zero();
             scale = sc;
         }
         

@@ -16,27 +16,9 @@ SDL_Event Game::event;
 
 SDL_Rect Game::camera = {0, 0, 800, 640};
 
-std::vector<ColliderComponent*> Game::colliders;
-
 bool Game::isRunning = false;
 
 auto& player(manager.addEntity());
-auto& wall(manager.addEntity());
-
-const char* mapfile = "assets/terrain_ss.png";
-
-enum groupLabels : std::size_t
-{
-    groupMap,
-    groupPlayers,
-    groupEnemies,
-    groupColliders
-
-};
-
-auto& tiles(manager.getGroup(groupMap));
-auto& players(manager.getGroup(groupPlayers));
-auto& enemies(manager.getGroup(groupEnemies));
 
 Game::Game()
 {}
@@ -72,19 +54,22 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         isRunning = true;
     }
 
-    map = new Map();
+    map = new Map("assets/terrain_ss.png", 3, 32);
+    map->LoadMap("assets/map.map", 25, 20);
 
     //init game objects (player, enemies, map, etc)
 
-    player.addComponent<TransformComponent>(2);
+    player.addComponent<TransformComponent>(800.0f, 640.0f, 32, 32, 2);
     player.addComponent<SpriteComponent>("assets/player_anims.png", true);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("player");
     player.addGroup(groupPlayers);
 
-    Map::LoadMap("assets/map.map", 25, 20);
-
 }
+
+auto& tiles(manager.getGroup(Game::groupMap));
+auto& players(manager.getGroup(Game::groupPlayers));
+auto& colliders(manager.getGroup(Game::groupColliders));
 
 void Game::handleEvents()
 {
@@ -104,8 +89,21 @@ void Game::handleEvents()
 
 void Game::update()
 {
+
+    SDL_Rect playerCol = player.getComponent<ColliderComponent>().collider;
+    Vector2D playerPos = player.getComponent<TransformComponent>().posititon;
+
     manager.refresh();
     manager.update();
+
+    for (auto& c : colliders)
+    {
+        SDL_Rect cCol = c->getComponent<ColliderComponent>().collider;
+        if(Collision::AABB(cCol, playerCol))
+        {
+            player.getComponent<TransformComponent>().posititon = playerPos;
+        }
+    }
 
     camera.x = player.getComponent<TransformComponent>().posititon.x - 400;
     camera.y = player.getComponent<TransformComponent>().posititon.y - 320;
@@ -135,8 +133,8 @@ void Game::render()
 {
     SDL_RenderClear(renderer);
     for(auto& t : tiles) { t->draw(); }
+    for(auto& c: colliders) { c->draw(); }
     for(auto& p : players) { p->draw(); }
-    for(auto& e : enemies) { e->draw(); }
     SDL_RenderPresent(renderer);
 }
 
@@ -146,11 +144,4 @@ void Game::clean()
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
     std::cout << "Game cleaned" << std::endl;
-}
-
-void Game::AddTile(int srcX, int srcY, int xpos, int ypos)
-{
-    auto& tile(manager.addEntity());
-    tile.addComponent<TileComponent>(srcX, srcY, xpos, ypos, mapfile);
-    tile.addGroup(groupMap);
 }
