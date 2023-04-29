@@ -19,7 +19,7 @@ std::vector<ColliderComponent*> Game::colliders;
 auto& player(manager.addEntity());
 auto& wall(manager.addEntity());
 
-const char* mapfile = "assets/terrain_ss";
+const char* mapfile = "assets/terrain_ss.png";
 
 enum groupLabels : std::size_t
 {
