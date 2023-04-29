@@ -24,7 +24,8 @@ struct TransformComponent : public Component
 
         TransformComponent(int sc)
         {
-            posititon.Zero();
+            posititon.x = 400;
+            posititon.y = 320;
             scale = sc;
         }
         
@@ -50,8 +51,7 @@ struct TransformComponent : public Component
 
         void update() override
         {
-            posititon.x += velocity.x * speed;
-            posititon.y += velocity.y * speed;
+            
         }
 
 };
