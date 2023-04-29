@@ -7,6 +7,7 @@
 #include "Collision.hpp"
 
 
+
 Map* map;
 Manager manager;
 
@@ -15,6 +16,8 @@ SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
 SDL_Rect Game::camera = {0, 0, 800, 640};
+
+AssetManager * Game::assets = new AssetManager(&manager);
 
 bool Game::isRunning = false;
 
@@ -54,13 +57,16 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         isRunning = true;
     }
 
-    map = new Map("assets/terrain_ss.png", 3, 32);
+    assets->AddTexture("terrain", "assets/terrain_ss.png");
+    assets->AddTexture("player", "assets/player_anims.png");
+
+    map = new Map("terrain", 3, 32);
     map->LoadMap("assets/map.map", 25, 20);
 
     //init game objects (player, enemies, map, etc)
 
     player.addComponent<TransformComponent>(800.0f, 640.0f, 32, 32, 2);
-    player.addComponent<SpriteComponent>("assets/player_anims.png", true);
+    player.addComponent<SpriteComponent>("player", true);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("player");
     player.addGroup(groupPlayers);

@@ -1,4 +1,4 @@
-#include "AssetManaer.hpp"
+#include "AssetManager.hpp"
 
 AssetManager::AssetManager(Manager* man) : manager(man)
 {}

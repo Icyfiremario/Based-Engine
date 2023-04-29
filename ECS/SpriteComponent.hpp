@@ -6,6 +6,7 @@
 #include "../TextureManager.hpp"
 #include "Animation.hpp"
 #include <map>
+#include "../AssetManager.hpp"
 
 class SpriteComponent : public Component
 {
@@ -27,12 +28,12 @@ class SpriteComponent : public Component
         SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;
 
         SpriteComponent() = default;
-        SpriteComponent(const char* path)
+        SpriteComponent(std::string id)
         {
-            setTex(path);
+            setTex(id);
         }
 
-        SpriteComponent(const char* path, bool isAnimated)
+        SpriteComponent(std::string id, bool isAnimated)
         {
             animated = isAnimated;
             
@@ -44,17 +45,16 @@ class SpriteComponent : public Component
 
             Play("Idle");
 
-            setTex(path);
+            setTex(id);
         }
 
         ~SpriteComponent()
         {
-            SDL_DestroyTexture(texture);
         }
 
-        void setTex(const char* path)
+        void setTex(std::string id)
         {
-            texture = TextureManager::LoadTexture(path);
+            texture = Game::assets->GetTexture(id);
         }
 
         void init() override

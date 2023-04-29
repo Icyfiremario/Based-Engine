@@ -5,6 +5,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <vector>
+#include "AssetManager.hpp"
 
 
 class ColliderComponent;
@@ -39,6 +40,8 @@ class Game
             groupPlayers,
             groupColliders
         };
+
+        static AssetManager* assets;
         
     private:
         int cnt = 0;
