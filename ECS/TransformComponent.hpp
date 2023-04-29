@@ -51,7 +51,8 @@ struct TransformComponent : public Component
 
         void update() override
         {
-            
+            posititon.x += velocity.x * speed;
+            posititon.y += velocity.y * speed;
         }
 
 };
