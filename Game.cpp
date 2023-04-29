@@ -74,7 +74,6 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     player.addComponent<ColliderComponent>("player");
     player.addGroup(groupPlayers);
 
-
     Map::LoadMap("assets/map.map", 25, 20);
 
 }
