@@ -5,18 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/src/include",
-                "${workspaceFolder}/src/include",
-                "${workspaceFolder}/src/include",
-                "${workspaceFolder}/src/include",
-                "${workspaceFolder}/src/include",
-                "${workspaceFolder}/src/include",
-                "${workspaceFolder}/src/include",
-                "${workspaceFolder}/src/include",
-                "${workspaceFolder}/src/include",
-                "${workspaceFolder}/src/include",
-                "${workspaceFolder}/src/include",
-                "${workspaceFolder}/src/include",
-                "${workspaceFolder}/src/include/SDL2"
+                "${workspaceFolder}/src/include"
             ],
             "defines": [
                 "_DEBUG",
@@ -28,7 +17,7 @@
             "cStandard": "c17",
             "cppStandard": "c++17",
             "intelliSenseMode": "windows-msvc-x64",
-            "configurationProvider": "ms-vscode.cpptools"
+            "configurationProvider": "ms-vscode.makefile-tools"
         }
     ],
     "version": 4
