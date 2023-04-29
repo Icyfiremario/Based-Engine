@@ -2,6 +2,7 @@
 #define TextureManager_hpp
 
 #include "Game.hpp"
+#include "AssetManager.hpp"
 
 class TextureManager
 {

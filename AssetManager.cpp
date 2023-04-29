@@ -1,9 +1,11 @@
 #include "AssetManager.hpp"
+#include "ECS/Components.hpp"
 
 AssetManager::AssetManager(Manager* man) : manager(man)
 {}
 
-AssetManager::~AssetManager() {}
+AssetManager::~AssetManager() 
+{}
 
 void AssetManager::AddTexture(std::string id, const char* path)
 {

@@ -5,7 +5,6 @@
 #include <SDL2/SDL.h>
 #include "../Vector2D.hpp"
 #include "../Game.hpp"
-#include "../AssetManager.hpp"
 
 class TileComponent : public Component
 {

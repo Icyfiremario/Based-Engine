@@ -10,9 +10,12 @@ class Map
 
         Map(std::string tId, int ms, int ts);
         ~Map();
+
         void AddTile(int srcX, int srcY, int xpos, int ypos);
         void LoadMap(std::string path, int sizeX, int sizeY);
+
     private:
+
         std::string texID;
         int mapScale;
         int tileSize;
