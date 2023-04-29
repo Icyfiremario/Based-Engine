@@ -5,7 +5,7 @@
 #include "ECS/Components.hpp"
 #include "Vector2D.hpp"
 #include "Collision.hpp"
-
+#include "AssetManager.hpp"
 
 
 Map* map;
