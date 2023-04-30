@@ -4,8 +4,8 @@
 #include "ECS.hpp"
 #include "../AssetManager.hpp"
 #include "../Game.hpp"
-#include <SDL.h>
-#include <SDL_ttf.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <string>
 
 class UILable : public Component
@@ -17,15 +17,15 @@ class UILable : public Component
             position.x = xpos;
             position.y = ypos;
 
-
+            SetLabelText(labelText, labelFont);
 
         }
         ~UILable()
         {}
 
-        void SetLabelText()
+        void SetLabelText(std::string text, std::string font)
         {
-            SDL_Surface* surf = TTF_RenderText_Blended(Game::assets->GetFont(labelFont), labelText.c_str(), textColor);
+            SDL_Surface* surf = TTF_RenderText_Blended(Game::assets->GetFont(font), text.c_str(), textColor);
             labelTexture = SDL_CreateTextureFromSurface(Game::renderer, surf);
             SDL_FreeSurface(surf);
 

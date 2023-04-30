@@ -79,6 +79,9 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     player.addComponent<ColliderComponent>("player");
     player.addGroup(groupPlayers);
 
+    SDL_Color white = {255, 255, 255, 255};
+    label.addComponent<UILable>(10, 10, "Bababooey", "arial", white);
+
     assets->CreateProjectile(Vector2D(600, 600), Vector2D(1, 0), 200, 2, "ball");
 
 }
@@ -162,6 +165,7 @@ void Game::render()
     for(auto& c: colliders) { c->draw(); }
     for(auto& p : players) { p->draw(); }
     for(auto& p : projectiles) { p->draw(); }
+    label.draw();
     SDL_RenderPresent(renderer);
 }
 
