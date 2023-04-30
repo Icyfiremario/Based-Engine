@@ -10,5 +10,6 @@
 #include "Animation.hpp"
 #include "ProjectileComponent.hpp"
 #include "UILable.hpp"
+#include "StatsComponent.hpp"
 
 #endif /* Components_hpp */
