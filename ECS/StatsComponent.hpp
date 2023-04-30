@@ -8,14 +8,18 @@ class StatsComponent : public Component
 {
     public:
 
-        StatsComponent()
-        {}
-        ~StatsComponent();
+        int health;
+        int armour;
+        int magic;
 
-    private:
-    int health;
-    int armour;
-    int magic;
+        StatsComponent(int hp, int ap, int mp)
+        {
+            health = hp;
+            armour = ap;
+            magic = mp;
+        }
+        ~StatsComponent();
+        
 };
 
 #endif /* StatsComponent_hpp */
