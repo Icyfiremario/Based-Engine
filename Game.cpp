@@ -22,6 +22,7 @@ AssetManager* Game::assets = new AssetManager(&manager);
 bool Game::isRunning = false;
 
 auto& player(manager.addEntity());
+auto& label(manager.addEntity());
 
 Game::Game()
 {}
@@ -58,9 +59,14 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         isRunning = true;
     }
 
+    if(TTF_Init() == -1)
+    {
+        std::cout << "Error : SDL_TTF" << std::endl;
+    }
     assets->AddTexture("terrain", "assets/terrain_ss.png");
     assets->AddTexture("player", "assets/player_anims.png");
     assets->AddTexture("ball", "assets/ball.png");
+    assets->AddFont("arial", "assets/arial.ttf", 16);
 
     map = new Map("terrain", 3, 32);
     map->LoadMap("assets/map.map", 25, 20);

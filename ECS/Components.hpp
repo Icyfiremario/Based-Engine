@@ -9,5 +9,6 @@
 #include "TileCompnent.hpp"
 #include "Animation.hpp"
 #include "ProjectileComponent.hpp"
+#include "UILable.hpp"
 
 #endif /* Components_hpp */
