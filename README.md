@@ -5,3 +5,6 @@ The assets in the asset folder are for a simple demo as of now and are not nessi
 
 Lets make game playlist:
 https://www.youtube.com/playlist?list=PLhfAbcv9cehhkG7ZQK0nfIGJC_C-wSLrx
+
+Code by me
+Art by Mobsik
