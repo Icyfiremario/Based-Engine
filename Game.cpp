@@ -6,6 +6,7 @@
 #include "Vector2D.hpp"
 #include "Collision.hpp"
 #include "AssetManager.hpp"
+#include <sstream>
 
 
 Map* map;
@@ -112,6 +113,12 @@ void Game::update()
 
     SDL_Rect playerCol = player.getComponent<ColliderComponent>().collider;
     Vector2D playerPos = player.getComponent<TransformComponent>().posititon;
+
+    std::stringstream ss;
+
+    ss << "Player position" << playerPos;
+
+    label.getComponent<UILable>().SetLabelText(ss.str(), "arial");
 
     manager.refresh();
     manager.update();
