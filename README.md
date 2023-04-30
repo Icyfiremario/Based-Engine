@@ -13,11 +13,11 @@ Code by me
 
 Art by Mobsik
 
-#Use Requirements
+# Use Requirements
 
 Make
 g++
 
-#How to Use
+# How to Use
 
 Clone the Repository into a floder and begin editing code to fit your games needs. VS Code is reccomended for easy quick editing.
