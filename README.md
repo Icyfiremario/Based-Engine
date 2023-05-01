@@ -19,6 +19,8 @@ Make
 
 g++
 
+C++ IDE (I Use vscode or visual stuido community)
+
 # How to Use
 
 Clone the Repository into a floder and begin editing code to fit your games needs. 
