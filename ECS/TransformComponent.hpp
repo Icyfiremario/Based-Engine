@@ -68,11 +68,11 @@ struct TransformComponent : public Component
             }
             else if(velocity.x == 0 && velocity.y == 1)
             {
-                Facing = "Up";
+                Facing = "Down";
             }
             else if(velocity.x == 0 && velocity.y == -1)
             {
-                Facing = "Down";
+                Facing = "Up";
             }
         }
 

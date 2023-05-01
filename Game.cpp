@@ -65,6 +65,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     {
         std::cout << "Error : SDL_TTF" << std::endl;
     }
+
     assets->AddTexture("terrain", "assets/terrain_ss.png");
     assets->AddTexture("player", "assets/player_anims.png");
     assets->AddTexture("ball", "assets/ball.png");
@@ -79,11 +80,12 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     player.addComponent<SpriteComponent>("player", true);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("player");
+    player.addComponent<StatsComponent>(20, 0, 10);
     player.addGroup(groupPlayers);
 
     SDL_Color white = {255, 255, 255, 255};
     positionLabel.addComponent<UILable>(10, 10, "Bababooey", "arial", white);
-    facingLabel.addComponent<UILable>(15, 15, "Bababooey", "arial", white);
+    facingLabel.addComponent<UILable>(10, 25, "Bababooey", "arial", white);
 
     assets->CreateProjectile(Vector2D(600, 600), Vector2D(1, 0), 200, 2, "ball");
 
