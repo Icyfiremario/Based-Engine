@@ -25,11 +25,15 @@ class AssetManager
         void AddFont(std::string id, std::string path, int fontSize);
         TTF_Font* GetFont(std::string id);
 
+        void AddSfx(std::string id, const char* path);
+        Mix_Chunk* GetSfx(std::string id);
+
     private:
 
         Manager* manager;
         std::map<std::string, SDL_Texture*> textures;
         std::map<std::string, TTF_Font*> fonts;
+        std::map<std::string, Mix_Chunk*> sfxs;
         
 };
 

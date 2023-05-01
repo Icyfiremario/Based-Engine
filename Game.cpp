@@ -14,6 +14,7 @@ Manager manager;
 
 SDL_Renderer* Game::renderer = nullptr;
 
+
 SDL_Event Game::event;
 
 SDL_Rect Game::camera = {0, 0, 800, 640};
@@ -64,6 +65,10 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     if(TTF_Init() == -1)
     {
         std::cout << "Error : SDL_TTF" << std::endl;
+    }
+    if(Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4069) == -1)
+    {
+        std::cout << "Error: SDL_Mixer" << std::endl;
     }
 
     assets->AddTexture("terrain", "assets/terrain_ss.png");
