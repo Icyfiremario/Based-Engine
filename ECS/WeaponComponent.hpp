@@ -8,6 +8,7 @@
 #include "../AssetManager.hpp"
 #include "../Game.hpp"
 #include "../Vector2D.hpp"
+#include "../TextureManager.hpp"
 
 class WeaponComponenet : public Component
 {
