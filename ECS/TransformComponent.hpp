@@ -3,6 +3,7 @@
 
 #include "Components.hpp"
 #include "../Vector2D.hpp"
+#include <string>
 
 struct TransformComponent : public Component
 {
@@ -18,6 +19,8 @@ struct TransformComponent : public Component
         int speed = 3;
 
         bool blocked = false;
+
+        std::string Facing = "Right";
 
         TransformComponent()
         {
@@ -54,6 +57,23 @@ struct TransformComponent : public Component
         {
             posititon.x += velocity.x * speed;
             posititon.y += velocity.y * speed;
+
+            if(velocity.x == 1 && velocity.y ==0)
+            {
+                Facing = "Right";
+            }
+            else if(velocity.x == -1 && velocity.y == 0)
+            {
+                Facing = "Left";
+            }
+            else if(velocity.x == 0 && velocity.y == 1)
+            {
+                Facing = "Up";
+            }
+            else if(velocity.x == 0 && velocity.y == -1)
+            {
+                Facing = "Down";
+            }
         }
 
 };
