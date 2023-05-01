@@ -15,17 +15,19 @@ class StatsComponent : public Component
         int armour;
         int totalMagic;
         int curMP;
+        bool player;
 
         StatsComponent()
         {}
         ~StatsComponent()
         {}
 
-        StatsComponent(int hp, int ap, int mp)
+        StatsComponent(int hp, int ap, int mp, bool isPLayer)
         {
             totalHealth = curHP = hp;
             armour = ap;
             totalMagic = curMP = mp;
+            player = isPLayer;
         }
 
         void update() override

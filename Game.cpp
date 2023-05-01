@@ -85,7 +85,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     player.addComponent<SpriteComponent>("player", true);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("player");
-    player.addComponent<StatsComponent>(20, 0, 10);
+    player.addComponent<StatsComponent>(20, 0, 10, true);
     player.addGroup(groupPlayers);
 
     SDL_Color white = {255, 255, 255, 255};
