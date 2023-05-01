@@ -23,7 +23,8 @@ AssetManager* Game::assets = new AssetManager(&manager);
 bool Game::isRunning = false;
 
 auto& player(manager.addEntity());
-auto& label(manager.addEntity());
+auto& positionLabel(manager.addEntity());
+auto& facingLabel(manager.addEntity());
 
 Game::Game()
 {}
@@ -78,11 +79,11 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     player.addComponent<SpriteComponent>("player", true);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("player");
-    player.addComponent<StatsComponent>(20, 0, 10);
     player.addGroup(groupPlayers);
 
     SDL_Color white = {255, 255, 255, 255};
-    label.addComponent<UILable>(10, 10, "Bababooey", "arial", white);
+    positionLabel.addComponent<UILable>(10, 10, "Bababooey", "arial", white);
+    facingLabel.addComponent<UILable>(15, 15, "Bababooey", "arial", white);
 
     assets->CreateProjectile(Vector2D(600, 600), Vector2D(1, 0), 200, 2, "ball");
 
@@ -115,11 +116,14 @@ void Game::update()
     SDL_Rect playerCol = player.getComponent<ColliderComponent>().collider;
     Vector2D playerPos = player.getComponent<TransformComponent>().posititon;
 
-    std::stringstream ss;
+    std::stringstream PostitionStream;
+    std::stringstream FacingStream;
 
-    ss << "Player position" << playerPos;
+    PostitionStream << "Player position: " << playerPos;
+    FacingStream << "Facing: " << player.getComponent<TransformComponent>().Facing;
 
-    label.getComponent<UILable>().SetLabelText(ss.str(), "arial");
+    positionLabel.getComponent<UILable>().SetLabelText(PostitionStream.str(), "arial");
+    facingLabel.getComponent<UILable>().SetLabelText(FacingStream.str(), "arial");
 
     manager.refresh();
     manager.update();
@@ -173,7 +177,8 @@ void Game::render()
     for(auto& c: colliders) { c->draw(); }
     for(auto& p : players) { p->draw(); }
     for(auto& p : projectiles) { p->draw(); }
-    label.draw();
+    positionLabel.draw();
+    facingLabel.draw();
     SDL_RenderPresent(renderer);
 }
 

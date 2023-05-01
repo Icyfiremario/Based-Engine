@@ -11,5 +11,6 @@
 #include "ProjectileComponent.hpp"
 #include "UILable.hpp"
 #include "StatsComponent.hpp"
+#include "WeaponComponent.hpp"
 
 #endif /* Components_hpp */
