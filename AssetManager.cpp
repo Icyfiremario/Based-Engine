@@ -46,3 +46,13 @@ Mix_Chunk* AssetManager::GetSfx(std::string id)
 {
     return sfxs[id];
 }
+
+void AssetManager::AddOST(std::string id, const char* path)
+{
+    OST.emplace(id, Mix_LoadMUS(path));
+}
+
+Mix_Music* AssetManager::GetOST(std::string id)
+{
+    return OST[id];
+}

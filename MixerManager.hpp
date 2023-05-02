@@ -12,6 +12,9 @@ class MixerManager
 
         void PlaySFX(std::string id);
 
+        void PlayMusic(std::string id);
+
     private:
         Mix_Chunk* sfx;
+        Mix_Music* music;
 };

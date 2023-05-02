@@ -28,12 +28,16 @@ class AssetManager
         void AddSfx(std::string id, const char* path);
         Mix_Chunk* GetSfx(std::string id);
 
+        void AddOST(std::string id, const char* path);
+        Mix_Music* GetOST(std::string id);
+
     private:
 
         Manager* manager;
         std::map<std::string, SDL_Texture*> textures;
         std::map<std::string, TTF_Font*> fonts;
         std::map<std::string, Mix_Chunk*> sfxs;
+        std::map<std::string, Mix_Music*> OST;
         
 };
 

@@ -6,6 +6,7 @@
 #include "Vector2D.hpp"
 #include "Collision.hpp"
 #include "AssetManager.hpp"
+#include "MixerManager.hpp"
 #include <sstream>
 
 
@@ -20,6 +21,7 @@ SDL_Event Game::event;
 SDL_Rect Game::camera = {0, 0, 800, 640};
 
 AssetManager* Game::assets = new AssetManager(&manager);
+MixerManager* mixer = new MixerManager;
 
 bool Game::isRunning = false;
 
@@ -72,10 +74,11 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     }
 
     assets->AddTexture("terrain", "assets/terrain_ss.png");
-    assets->AddTexture("player", "assets/player_anims.png");
+    assets->AddTexture("player", "assets/player_anims_2.png");
     assets->AddTexture("ball", "assets/ball.png");
     assets->AddFont("arial", "assets/arial.ttf", 16);
     assets->AddSfx("Shoot", "assets/Shoot.wav");
+    assets->AddOST("Main", "assets/loz.wav");
 
     map = new Map("terrain", 3, 32);
     map->LoadMap("assets/map.map", 25, 20);
@@ -94,6 +97,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     facingLabel.addComponent<UILable>(10, 25, "Bababooey", "arial", white);
 
     assets->CreateProjectile(Vector2D(600, 600), Vector2D(1, 0), 200, 2, "ball");
+    mixer->PlayMusic("Main");
 
 }
 

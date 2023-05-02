@@ -4,15 +4,12 @@
 #include "../Game.hpp"
 #include "ECS.hpp"
 #include "Components.hpp"
-#include "../MixerManager.hpp"
 
 class KeyboardController : public Component
 {
     public:
         TransformComponent *transform;
         SpriteComponent *sprite;
-
-        MixerManager* mixer = new MixerManager;
 
         void init() override
         {
@@ -48,7 +45,6 @@ class KeyboardController : public Component
                     break;
 
                 case SDLK_0:
-                    mixer->PlaySFX("Shoot");
                     break;
 
                 default:
