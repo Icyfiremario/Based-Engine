@@ -25,23 +25,27 @@ class KeyboardController : public Component
                 {
                 case SDLK_w:
                     transform->velocity.y = -1;
-                    sprite->Play("Walk");
+                    setAnimation();
+                    sprite->Play(animationID);
                     break;
 
                 case SDLK_a:
                     transform->velocity.x = -1;
-                    sprite->Play("Walk");
+                    setAnimation();
+                    sprite->Play(animationID);
                     sprite->spriteFlip = SDL_FLIP_HORIZONTAL;
                     break;
                 
                 case SDLK_s:
                     transform->velocity.y = 1;
-                    sprite->Play("Walk");
+                    setAnimation();
+                    sprite->Play(animationID);
                     break;
 
                 case SDLK_d:
                     transform->velocity.x = 1;
-                    sprite->Play("Walk");
+                    setAnimation();
+                    sprite->Play(animationID);
                     break;
 
                 case SDLK_0:
@@ -82,6 +86,22 @@ class KeyboardController : public Component
                 default:
                     break;
                 }
+            }
+        }
+
+    private:
+
+        const char* animationID;
+
+        void setAnimation()
+        {
+            if(entity->getComponent<TransformComponent>().Facing == "Right" || entity->getComponent<TransformComponent>().Facing == "Left")
+            {
+                animationID = "Walk Horiz";
+            }
+            else if(entity->getComponent<TransformComponent>().Facing == "Down")
+            {
+                animationID = "Walk Down";
             }
         }
 };

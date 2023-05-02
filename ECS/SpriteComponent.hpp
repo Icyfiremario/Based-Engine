@@ -39,12 +39,12 @@ class SpriteComponent : public Component
             animated = isAnimated;
             
             Animation idle = Animation(0, 3, 1500);
-            Animation walk = Animation(1, 13, 150);
-            //Animation walkDown = Animation(2, 13, 150);
+            Animation walkHoriz = Animation(1, 13, 150);
+            Animation walkDown = Animation(2, 13, 150);
 
             animations.emplace("Idle", idle);
-            animations.emplace("Walk", walk);
-            //animations.emplace("Walk Down", walkDown);
+            animations.emplace("Walk Horiz", walkHoriz);
+            animations.emplace("Walk Down", walkDown);
 
             Play("Idle");
 
