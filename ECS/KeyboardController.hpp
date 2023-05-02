@@ -4,12 +4,14 @@
 #include "../Game.hpp"
 #include "ECS.hpp"
 #include "Components.hpp"
+#include "../MixerManager.hpp"
 
 class KeyboardController : public Component
 {
     public:
         TransformComponent *transform;
         SpriteComponent *sprite;
+        MixerManager* mixer = new MixerManager;
 
         void init() override
         {
@@ -49,6 +51,7 @@ class KeyboardController : public Component
                     break;
 
                 case SDLK_0:
+                    mixer->PlaySFX("Shoot");
                     break;
 
                 default:
@@ -98,10 +101,20 @@ class KeyboardController : public Component
             if(entity->getComponent<TransformComponent>().Facing == "Right" || entity->getComponent<TransformComponent>().Facing == "Left")
             {
                 animationID = "Walk Horiz";
+                return;
             }
             else if(entity->getComponent<TransformComponent>().Facing == "Down")
             {
                 animationID = "Walk Down";
+                return;
+            }
+            else if(entity->getComponent<TransformComponent>().Facing == "Up")
+            {
+                animationID = "Walk Horiz";
+            }
+            else
+            {
+                animationID = "Walk Horiz";
             }
         }
 };
