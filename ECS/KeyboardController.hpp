@@ -4,12 +4,15 @@
 #include "../Game.hpp"
 #include "ECS.hpp"
 #include "Components.hpp"
+#include "../MixerManager.hpp"
 
 class KeyboardController : public Component
 {
     public:
         TransformComponent *transform;
         SpriteComponent *sprite;
+
+        MixerManager* mixer = new MixerManager;
 
         void init() override
         {
@@ -42,6 +45,10 @@ class KeyboardController : public Component
                 case SDLK_d:
                     transform->velocity.x = 1;
                     sprite->Play("Walk");
+                    break;
+
+                case SDLK_0:
+                    mixer->PlaySFX("Shoot");
                     break;
 
                 default:
