@@ -16,6 +16,7 @@ Manager manager;
 SDL_Renderer* Game::renderer = nullptr;
 
 
+
 SDL_Event Game::event;
 
 SDL_Rect Game::camera = {0, 0, 800, 640};
@@ -72,6 +73,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     {
         std::cout << "Error: SDL_Mixer" << std::endl;
     }
+    
 
     assets->AddTexture("terrain", "assets/terrain_ss.png");
     assets->AddTexture("player", "assets/player_anims.png");
