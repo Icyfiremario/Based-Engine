@@ -74,7 +74,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     }
 
     assets->AddTexture("terrain", "assets/terrain_ss.png");
-    assets->AddTexture("player", "assets/player_anims_2.png");
+    assets->AddTexture("player", "assets/player_anims.png");
     assets->AddTexture("ball", "assets/ball.png");
     assets->AddFont("arial", "assets/arial.ttf", 16);
     assets->AddSfx("Shoot", "assets/Shoot.wav");

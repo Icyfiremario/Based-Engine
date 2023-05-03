@@ -27,27 +27,19 @@ class KeyboardController : public Component
                 {
                 case SDLK_w:
                     transform->velocity.y = -1;
-                    setAnimation();
-                    sprite->Play(animationID);
                     break;
 
                 case SDLK_a:
                     transform->velocity.x = -1;
-                    setAnimation();
-                    sprite->Play(animationID);
                     sprite->spriteFlip = SDL_FLIP_HORIZONTAL;
                     break;
                 
                 case SDLK_s:
                     transform->velocity.y = 1;
-                    setAnimation();
-                    sprite->Play(animationID);
                     break;
 
                 case SDLK_d:
                     transform->velocity.x = 1;
-                    setAnimation();
-                    sprite->Play(animationID);
                     break;
 
                 case SDLK_0:
@@ -64,23 +56,19 @@ class KeyboardController : public Component
                 {
                 case SDLK_w:
                     transform->velocity.y = 0;
-                    sprite->Play("Idle");
                     break;
 
                 case SDLK_a:
                     transform->velocity.x = 0;
-                    sprite->Play("Idle");
                     sprite->spriteFlip = SDL_FLIP_NONE;
                     break;
                 
                 case SDLK_s:
                     transform->velocity.y = 0;
-                    sprite->Play("Idle");
                     break;
 
                 case SDLK_d:
                     transform->velocity.x = 0;
-                    sprite->Play("Idle");
                     break;
                 
                 case SDLK_ESCAPE:
@@ -92,31 +80,7 @@ class KeyboardController : public Component
             }
         }
 
-    private:
-
-        const char* animationID;
-
-        void setAnimation()
-        {
-            if(entity->getComponent<TransformComponent>().Facing == "Right" || entity->getComponent<TransformComponent>().Facing == "Left")
-            {
-                animationID = "Walk Horiz";
-                return;
-            }
-            else if(entity->getComponent<TransformComponent>().Facing == "Down")
-            {
-                animationID = "Walk Down";
-                return;
-            }
-            else if(entity->getComponent<TransformComponent>().Facing == "Up")
-            {
-                animationID = "Walk Horiz";
-            }
-            else
-            {
-                animationID = "Walk Horiz";
-            }
-        }
+    
 };
 
 #endif /* Keyboardcontroller_hpp */

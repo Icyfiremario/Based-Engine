@@ -41,10 +41,12 @@ class SpriteComponent : public Component
             Animation idle = Animation(0, 3, 1500);
             Animation walkHoriz = Animation(1, 13, 150);
             Animation walkDown = Animation(2, 13, 150);
+            Animation walkUp = Animation(3, 13, 150);
 
             animations.emplace("Idle", idle);
             animations.emplace("Walk Horiz", walkHoriz);
             animations.emplace("Walk Down", walkDown);
+            animations.emplace("Walk Up", walkUp);
 
             Play("Idle");
 
@@ -79,6 +81,7 @@ class SpriteComponent : public Component
             if(animated)
             {
                 srcRect.x = srcRect.w * static_cast<int>((SDL_GetTicks() / speed) % frames);
+                setAnimation();
             }
             
             srcRect.y = animIndex * transform->height;
@@ -101,7 +104,37 @@ class SpriteComponent : public Component
             speed = animations[animName].speed;
         }
 
+    private:
+
+        void setAnimation()
+        {
+            if(entity->getComponent<TransformComponent>().velocity.x == 0 && entity->getComponent<TransformComponent>().velocity.y == 0)
+            {
+                Play("Idle");
+                return;
+            }
+            else if((entity->getComponent<TransformComponent>().velocity.x == 1 && entity->getComponent<TransformComponent>().velocity.y == 0) || (entity->getComponent<TransformComponent>().velocity.x == -1 && entity->getComponent<TransformComponent>().velocity.y == 0))
+            {
+                Play("Walk Horiz");
+                return;
+            }
+            else if(entity->getComponent<TransformComponent>().velocity.x == 0 && entity->getComponent<TransformComponent>().velocity.y == 1)
+            {
+                Play("Walk Down");
+                return;
+            }
+            else if(entity->getComponent<TransformComponent>().velocity.x == 0 && entity->getComponent<TransformComponent>().velocity.y == -1)
+            {
+                Play("Walk Up");
+                return;
+            }
+
+        }
+
 
 };
 
 #endif /* SpriteComponent_hpp */
+
+//entity->getComponent<TransformComponent>().velocity.x == 1 && entity->getComponent<TransformComponent>().velocity.y == 0
+//entity->getComponent<TransformComponent>().velocity.x == 0 && entity->getComponent<TransformComponent>().velocity.y == 0
