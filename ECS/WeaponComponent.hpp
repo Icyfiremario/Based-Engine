@@ -20,20 +20,18 @@ class WeaponComponenet : public Component
         bool ranged = false;
         std::string id;
 
-        WeaponComponenet()
-        {}
-        ~WeaponComponenet()
-        {}
-
-        void AddWeapon(int dmg, int rng, int sp, bool rngd)
+        WeaponComponenet(int dmg, int rng, int sp)
         {
             damage = dmg;
             range = rng;
             speed = sp;
-            ranged = rngd;
         }
+        
+        ~WeaponComponenet()
+        {}
 
-        void UseWeapon(std::string id, bool rngd)
+
+        void UseWeapon(bool rngd)
         {
             if(rngd)
             {
@@ -63,7 +61,6 @@ class WeaponComponenet : public Component
         
         Vector2D facingVector;
         Vector2D entityPosition;
-        std::map<std::string, WeaponComponenet*> weapons;
 
 
 };

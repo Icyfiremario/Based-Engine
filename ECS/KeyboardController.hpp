@@ -6,12 +6,14 @@
 #include "Components.hpp"
 #include "../MixerManager.hpp"
 #include <SDL2/SDL_gamecontroller.h>
+#include "WeaponComponent.hpp"
 
 class KeyboardController : public Component
 {
     public:
         TransformComponent *transform;
         SpriteComponent *sprite;
+        WeaponComponenet* weapons;
         MixerManager* mixer = new MixerManager;
         SDL_Joystick* controller = NULL;
 
@@ -19,11 +21,13 @@ class KeyboardController : public Component
         {
             transform = &entity->getComponent<TransformComponent>();
             sprite = &entity->getComponent<SpriteComponent>();
+            weapons = &entity->getComponent<WeaponComponenet>();
 
         }
 
         void update() override
         {
+            SDL_JoystickUpdate();
             if(Game::event.type == SDL_JOYDEVICEADDED)
             {
                 SetUpController();
@@ -92,14 +96,44 @@ class KeyboardController : public Component
             }
             if(Game::event.type == SDL_JOYBUTTONDOWN)
             {
-                for(int b = 0; b < SDL_JoystickNumButtons(controller); b++)
+                
+                if(SDL_JoystickGetButton(controller, 0))
                 {
-                    if(SDL_JoystickGetButton(controller, b))
+                    std::cout << "B button pressed" << std::endl;
+                }
+                if(SDL_JoystickGetButton(controller, 1))
+                {
+                    std::cout << "A button pressed" << std::endl;
+                }
+                
+            }
+            if(Game::event.type == SDL_JOYAXISMOTION)
+            {
+                if(SDL_JoystickGetAxis(controller, 0))
+                {
+                    if(SDL_JoystickGetAxis(controller, 0) >= 32767)
                     {
-                        std::cout << b << std::endl;
+                        std::cout << "Dpad Right" << std::endl;
                     }
+                    else if(SDL_JoystickGetAxis(controller, 0) <= -32767)
+                    {
+                        std::cout << "Dpad left" << std::endl;
+                    }
+
+                }
+                if(SDL_JoystickGetAxis(controller, 1))
+                {
+                    if(SDL_JoystickGetAxis(controller, 1) >= 32767)
+                    {
+                        std::cout << "Dpad Down" << std::endl;
+                    }
+                    else if(SDL_JoystickGetAxis(controller, 1) <= -32767)
+                    {
+                        std::cout << "Dpad Up" << std::endl;
+                    }   
                 }
             }
+            
         }
     
     private:
@@ -126,6 +160,7 @@ class KeyboardController : public Component
                     std::cout << "ERROR: could not open game controller" << std::endl;
                 }
 
+                std::cout << SDL_JoystickNumAxes(controller) << std::endl;
             
             }
             
