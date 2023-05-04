@@ -47,7 +47,7 @@ class KeyboardController : public Component
 
                 case SDLK_a:
                     transform->velocity.x = -1;
-                    sprite->spriteFlip = SDL_FLIP_HORIZONTAL;
+                    //sprite->spriteFlip = SDL_FLIP_HORIZONTAL;
                     break;
                 
                 case SDLK_s:
@@ -76,7 +76,7 @@ class KeyboardController : public Component
 
                 case SDLK_a:
                     transform->velocity.x = 0;
-                    sprite->spriteFlip = SDL_FLIP_NONE;
+                    //sprite->spriteFlip = SDL_FLIP_NONE;
                     break;
                 
                 case SDLK_s:
@@ -100,10 +100,12 @@ class KeyboardController : public Component
                 if(SDL_JoystickGetButton(controller, 0))
                 {
                     std::cout << "B button pressed" << std::endl;
+                    //entity->getComponent<WeaponComponenet>().UseWeapon(true);
                 }
                 if(SDL_JoystickGetButton(controller, 1))
                 {
                     std::cout << "A button pressed" << std::endl;
+                    //entity->getComponent<WeaponComponenet>().UseWeapon(false);
                 }
                 
             }
@@ -113,11 +115,16 @@ class KeyboardController : public Component
                 {
                     if(SDL_JoystickGetAxis(controller, 0) >= 32767)
                     {
-                        std::cout << "Dpad Right" << std::endl;
+                        transform->velocity.x = 1;
                     }
                     if(SDL_JoystickGetAxis(controller, 0) <= -32767)
                     {
-                        std::cout << "Dpad left" << std::endl;
+                        transform->velocity.x = -1;
+                        //sprite->spriteFlip = SDL_FLIP_HORIZONTAL;
+                    }
+                    if(SDL_JoystickGetAxis(controller, 0) == -256)
+                    {
+                        transform->velocity.x = 0;
                     }
 
                 }
@@ -125,11 +132,15 @@ class KeyboardController : public Component
                 {
                     if(SDL_JoystickGetAxis(controller, 1) >= 32767)
                     {
-                        std::cout << "Dpad Down" << std::endl;
+                        transform->velocity.y = 1;
                     }
                     if(SDL_JoystickGetAxis(controller, 1) <= -32767)
                     {
-                        std::cout << "Dpad Up" << std::endl;
+                        transform->velocity.y = -1;
+                    }
+                    if(SDL_JoystickGetAxis(controller, 1) == -256)
+                    {
+                        transform->velocity.y = 0;
                     }   
                 }
             }

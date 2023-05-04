@@ -78,10 +78,11 @@ class SpriteComponent : public Component
 
         void update() override
         {
+            setAnimation();
             if(animated)
             {
                 srcRect.x = srcRect.w * static_cast<int>((SDL_GetTicks() / speed) % frames);
-                setAnimation();
+                
             }
             
             srcRect.y = animIndex * transform->height;
@@ -111,11 +112,18 @@ class SpriteComponent : public Component
             if(entity->getComponent<TransformComponent>().velocity.x == 0 && entity->getComponent<TransformComponent>().velocity.y == 0)
             {
                 Play("Idle");
+                spriteFlip = SDL_FLIP_NONE;
                 return;
             }
-            else if((entity->getComponent<TransformComponent>().velocity.x == 1 && entity->getComponent<TransformComponent>().velocity.y == 0) || (entity->getComponent<TransformComponent>().velocity.x == -1 && entity->getComponent<TransformComponent>().velocity.y == 0))
+            else if((entity->getComponent<TransformComponent>().velocity.x == 1 && entity->getComponent<TransformComponent>().velocity.y == 0))
             {
                 Play("Walk Horiz");
+                return;
+            }
+            else if(entity->getComponent<TransformComponent>().velocity.x == -1 && entity->getComponent<TransformComponent>().velocity.y == 0)
+            {
+                Play("Walk Horiz");
+                spriteFlip = SDL_FLIP_HORIZONTAL;
                 return;
             }
             else if(entity->getComponent<TransformComponent>().velocity.x == 0 && entity->getComponent<TransformComponent>().velocity.y == 1)

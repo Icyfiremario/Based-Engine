@@ -35,25 +35,34 @@ class WeaponComponenet : public Component
         {
             if(rngd)
             {
-                entityPosition = entity->getComponent<TransformComponent>().posititon;
+                entityPosition.x = entity->getComponent<TransformComponent>().posititon.x + 20;
+                entityPosition.y = entity->getComponent<TransformComponent>().posititon.y;
                 if(entity->getComponent<TransformComponent>().Facing == "UP")
                 {
-                    facingVector = {0, 1};
+                    facingVector.x = 0;
+                    facingVector.y = 1;
                 }
                 else if(entity->getComponent<TransformComponent>().Facing == "Down")
                 {
-                    facingVector = {0, -1};
+                    facingVector.x = 0;
+                    facingVector.y = -1;
                 }
                 else if (entity->getComponent<TransformComponent>().Facing == "Right")
                 {
-                    facingVector = {1, 0};
+                    facingVector.x = 1;
+                    facingVector.y = 0;
                 }
                 else if (entity->getComponent<TransformComponent>().Facing == "Left")
                 {
-                    facingVector = {-1, 0};
+                    facingVector.x = -1;
+                    facingVector.y = 0;
                 }
-                Game::assets->CreateProjectile(entityPosition, facingVector, range, speed, id);
+                Game::assets->CreateProjectile(entityPosition, facingVector, range, speed, "Ball");
                 
+            }
+            else
+            {
+                std::cout << "Melee used" << std::endl;
             }
         }
 
