@@ -115,7 +115,7 @@ class KeyboardController : public Component
                     {
                         std::cout << "Dpad Right" << std::endl;
                     }
-                    else if(SDL_JoystickGetAxis(controller, 0) <= -32767)
+                    if(SDL_JoystickGetAxis(controller, 0) <= -32767)
                     {
                         std::cout << "Dpad left" << std::endl;
                     }
@@ -127,7 +127,7 @@ class KeyboardController : public Component
                     {
                         std::cout << "Dpad Down" << std::endl;
                     }
-                    else if(SDL_JoystickGetAxis(controller, 1) <= -32767)
+                    if(SDL_JoystickGetAxis(controller, 1) <= -32767)
                     {
                         std::cout << "Dpad Up" << std::endl;
                     }   
