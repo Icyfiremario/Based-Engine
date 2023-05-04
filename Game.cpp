@@ -15,7 +15,7 @@ Manager manager;
 
 SDL_Renderer* Game::renderer = nullptr;
 
-
+SDL_Surface* icon = IMG_Load("assets/Based_Engine_logo.png");
 
 SDL_Event Game::event;
 
@@ -38,6 +38,7 @@ Game::~Game()
 
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
+    SDL_SetWindowIcon(window, icon);
 
     int flags = 0;
     if(fullscreen)
@@ -63,6 +64,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         }
 
         isRunning = true;
+        
     }
 
     if(TTF_Init() == -1)
@@ -103,6 +105,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     mixer->PlayMusic("Main");
 
 }
+
 
 auto& tiles(manager.getGroup(Game::groupMap));
 auto& players(manager.getGroup(Game::groupPlayers));

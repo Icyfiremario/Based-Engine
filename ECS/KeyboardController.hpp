@@ -160,7 +160,6 @@ class KeyboardController : public Component
                     std::cout << "ERROR: could not open game controller" << std::endl;
                 }
 
-                std::cout << SDL_JoystickNumAxes(controller) << std::endl;
             
             }
             

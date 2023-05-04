@@ -15,6 +15,9 @@ class ColliderComponent;
 class Game
 {
     public:
+
+        
+
         Game();
         ~Game();
 
@@ -44,6 +47,9 @@ class Game
     private:
         int cnt = 0;
         SDL_Window *window;
+        
+        
+        
 
 };
 
