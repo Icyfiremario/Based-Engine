@@ -15,8 +15,6 @@ Manager manager;
 
 SDL_Renderer* Game::renderer = nullptr;
 
-SDL_Surface* icon = IMG_Load("assets/Based_Engine_logo.png");
-
 SDL_Event Game::event;
 
 SDL_Rect Game::camera = {0, 0, 800, 640};
@@ -38,7 +36,6 @@ Game::~Game()
 
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
-    SDL_SetWindowIcon(window, icon);
 
     int flags = 0;
     if(fullscreen)

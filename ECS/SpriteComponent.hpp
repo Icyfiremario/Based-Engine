@@ -38,7 +38,7 @@ class SpriteComponent : public Component
         {
             animated = isAnimated;
             
-            Animation idle = Animation(0, 3, 1500);
+            Animation idle = Animation(0, 4, 1500);
             Animation walkHoriz = Animation(1, 13, 150);
             Animation walkDown = Animation(2, 13, 150);
             Animation walkUp = Animation(3, 13, 150);

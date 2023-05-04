@@ -159,7 +159,6 @@ class KeyboardController : public Component
                 {
                     std::cout << "ERROR: could not open game controller" << std::endl;
                 }
-
             
             }
             
