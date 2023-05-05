@@ -37,7 +37,7 @@ class WeaponComponenet : public Component
         {
             if(rngd)
             {
-                projectillePosition.x = entity->getComponent<TransformComponent>().posititon.x + 100;
+                projectillePosition.x = entity->getComponent<TransformComponent>().posititon.x + 40;
                 projectillePosition.y = entity->getComponent<TransformComponent>().posititon.y;
                 if(entity->getComponent<TransformComponent>().Facing == "UP")
                 {
