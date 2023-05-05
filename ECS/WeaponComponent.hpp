@@ -14,7 +14,7 @@ class WeaponComponenet : public Component
 {
     public:
 
-        TextureManager* texture;
+        SpriteComponent* sprite;
 
         int range = 0;
         int damage = 0;
@@ -37,7 +37,7 @@ class WeaponComponenet : public Component
         {
             if(rngd)
             {
-                projectillePosition.x = entity->getComponent<TransformComponent>().posititon.x + 40;
+                projectillePosition.x = entity->getComponent<TransformComponent>().posititon.x + 100;
                 projectillePosition.y = entity->getComponent<TransformComponent>().posititon.y;
                 if(entity->getComponent<TransformComponent>().Facing == "UP")
                 {
@@ -60,6 +60,7 @@ class WeaponComponenet : public Component
                     facingVector.y = 0;
                 }
                 Game::assets->CreateProjectile(projectillePosition, facingVector, range, speed, id);
+                sprite->setTex(id);
                 
             }
             else

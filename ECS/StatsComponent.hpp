@@ -10,11 +10,11 @@ class StatsComponent : public Component
 {
     public:
 
-        int totalHealth;
-        int curHP;
+        float totalHealth;
+        float curHP;
         int armour;
-        int totalMagic;
-        int curMP;
+        float totalMagic;
+        float curMP;
         bool player;
 
         StatsComponent()
