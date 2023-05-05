@@ -115,12 +115,12 @@ class SpriteComponent : public Component
                 spriteFlip = SDL_FLIP_NONE;
                 return;
             }
-            else if((entity->getComponent<TransformComponent>().velocity.x == 1 && entity->getComponent<TransformComponent>().velocity.y == 0))
+            else if((entity->getComponent<TransformComponent>().velocity.x == 1 && entity->getComponent<TransformComponent>().velocity.y == 0) || (entity->getComponent<TransformComponent>().velocity.x == 1 && (entity->getComponent<TransformComponent>().velocity.y == 1 || entity->getComponent<TransformComponent>().velocity.y == -1)))
             {
                 Play("Walk Horiz");
                 return;
             }
-            else if(entity->getComponent<TransformComponent>().velocity.x == -1 && entity->getComponent<TransformComponent>().velocity.y == 0)
+            else if((entity->getComponent<TransformComponent>().velocity.x == -1 && entity->getComponent<TransformComponent>().velocity.y == 0) || (entity->getComponent<TransformComponent>().velocity.x == 1 && (entity->getComponent<TransformComponent>().velocity.y == 1 || entity->getComponent<TransformComponent>().velocity.y == -1)))
             {
                 Play("Walk Horiz");
                 spriteFlip = SDL_FLIP_HORIZONTAL;

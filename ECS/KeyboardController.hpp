@@ -100,12 +100,17 @@ class KeyboardController : public Component
                 if(SDL_JoystickGetButton(controller, 0))
                 {
                     std::cout << "B button pressed" << std::endl;
-                    //entity->getComponent<WeaponComponenet>().UseWeapon(true);
+                    entity->getComponent<WeaponComponenet>().UseWeapon(true);
                 }
                 if(SDL_JoystickGetButton(controller, 1))
                 {
                     std::cout << "A button pressed" << std::endl;
                     //entity->getComponent<WeaponComponenet>().UseWeapon(false);
+                }
+                if(SDL_JoystickGetButton(controller, 9))
+                {
+                    std::cout << "Closing" << std::endl;
+                    Game::isRunning = false;
                 }
                 
             }

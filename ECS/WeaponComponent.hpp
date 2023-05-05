@@ -14,13 +14,15 @@ class WeaponComponenet : public Component
 {
     public:
 
+        TextureManager* texture;
+
         int range = 0;
         int damage = 0;
         int speed = 0;
         bool ranged = false;
         std::string id;
 
-        WeaponComponenet(int dmg, int rng, int sp)
+        WeaponComponenet(int dmg, int rng, int sp, std::string id)
         {
             damage = dmg;
             range = rng;
@@ -35,8 +37,8 @@ class WeaponComponenet : public Component
         {
             if(rngd)
             {
-                entityPosition.x = entity->getComponent<TransformComponent>().posititon.x + 32;
-                entityPosition.y = entity->getComponent<TransformComponent>().posititon.y;
+                projectillePosition.x = entity->getComponent<TransformComponent>().posititon.x + 100;
+                projectillePosition.y = entity->getComponent<TransformComponent>().posititon.y;
                 if(entity->getComponent<TransformComponent>().Facing == "UP")
                 {
                     facingVector.x = 0;
@@ -57,7 +59,7 @@ class WeaponComponenet : public Component
                     facingVector.x = -1;
                     facingVector.y = 0;
                 }
-                Game::assets->CreateProjectile(entityPosition, facingVector, range, speed, "Ball");
+                Game::assets->CreateProjectile(projectillePosition, facingVector, range, speed, id);
                 
             }
             else
@@ -69,7 +71,7 @@ class WeaponComponenet : public Component
     private:
         
         Vector2D facingVector;
-        Vector2D entityPosition;
+        Vector2D projectillePosition;
 
 
 };
