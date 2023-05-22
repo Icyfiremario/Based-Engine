@@ -48,19 +48,22 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
     if(SDL_Init(SDL_INIT_EVERYTHING) == 0)
     {
-        std::cout << "Subsystems Initialised!..." << std::endl;
+        //std::cout << "Subsystems Initialised!..." << std::endl;
+        PLOGI << "Subsystems Initialised!...";
 
         window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
         if(window)
         {
-            std::cout << "Window created!" << std::endl;
+            //std::cout << "Window created!" << std::endl;
+            PLOGI << "Window created!";
         }
 
         renderer = SDL_CreateRenderer(window, -1, 0);
         if(renderer)
         {
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-            std::cout << "Renderer created!" << std::endl;
+            //std::cout << "Renderer created!" << std::endl;
+            PLOGI << "Renderer created!";
         }
 
         isRunning = true;
@@ -69,11 +72,13 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
     if(TTF_Init() == -1)
     {
-        std::cout << "Error : SDL_TTF" << std::endl;
+        //std::cout << "Error : SDL_TTF" << std::endl;
+        PLOGE << "Error : SDL_TTF";
     }
     if(Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4069) == -1)
     {
-        std::cout << "Error: SDL_Mixer" << std::endl;
+        //std::cout << "Error: SDL_Mixer" << std::endl;
+        PLOGE << "Error: SDL_Mixer";
     }
     
 
@@ -162,7 +167,8 @@ void Game::update()
     {
         if(Collision::AABB(player.getComponent<ColliderComponent>().collider, p->getComponent<ColliderComponent>().collider))
         {
-            std::cout << "Hit player!" << std::endl;
+            //std::cout << "Hit player!" << std::endl;
+            PLOGV << "hit player";
             p->destroy();
         }
     }
