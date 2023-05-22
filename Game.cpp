@@ -37,6 +37,8 @@ Game::Game()
 Game::~Game()
 {}
 
+
+
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
 
@@ -215,5 +217,6 @@ void Game::clean()
     SDL_DestroyRenderer(renderer);
     Mix_CloseAudio();
     SDL_Quit();
-    std::cout << "Game cleaned" << std::endl;
+    //std::cout << "Game cleaned" << std::endl;
+    PLOGI << "Game cleaned";
 }

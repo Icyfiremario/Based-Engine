@@ -7,6 +7,7 @@
 #include <SDL2/SDL_mixer.h>
 #include <vector>
 #include <plog/Log.h>
+#include <plog/Initializers/RollingFileInitializer.h>
 
 
 
