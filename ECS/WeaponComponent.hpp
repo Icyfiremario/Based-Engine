@@ -60,7 +60,6 @@ class WeaponComponenet : public Component
                     facingVector.y = 0;
                 }
                 Game::assets->CreateProjectile(projectillePosition, facingVector, range, speed, id);
-                sprite->setTex(id);
                 
             }
             else

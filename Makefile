@@ -1,2 +1,2 @@
 all:
-	g++ -I src/include -L src/lib -g main.cpp Game.cpp TextureManager.cpp Map.cpp Vector2D.cpp Collision.cpp AssetManager.cpp ECS/ECS.cpp MixerManager.cpp -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer -o 'Wheatly Crab the game'
+	g++ -I src/include -L src/lib -g main.cpp Game.cpp TextureManager.cpp Map.cpp Vector2D.cpp Collision.cpp AssetManager.cpp ECS/ECS.cpp MixerManager.cpp icon.o -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer -m64 -o 'Wheatly Crab the game'

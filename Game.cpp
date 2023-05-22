@@ -22,6 +22,9 @@ SDL_Rect Game::camera = {0, 0, 800, 640};
 AssetManager* Game::assets = new AssetManager(&manager);
 MixerManager* mixer = new MixerManager;
 
+SDL_Color FGColor = { 255, 0, 0, 0 };
+SDL_Color BGColor = { 0, 0, 0, 0 };
+
 bool Game::isRunning = false;
 
 auto& player(manager.addEntity());
@@ -93,6 +96,8 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     player.addComponent<ColliderComponent>("player");
     player.addComponent<StatsComponent>(20, 0, 10, true);
     player.addComponent<WeaponComponenet>(20, 999, 2, "Laser");
+    //player.addComponent<StatsUI>();
+    //player.getComponent<StatsUI>().HPBar(10, 35, 128, 32, FGColor, BGColor);
     player.addGroup(groupPlayers);
 
     SDL_Color white = {255, 255, 255, 255};
