@@ -7,7 +7,6 @@
 #include "Collision.hpp"
 #include "AssetManager.hpp"
 #include "MixerManager.hpp"
-#include "GUIManager.hpp"
 #include <sstream>
 
 
@@ -22,7 +21,6 @@ SDL_Rect Game::camera = {0, 0, 800, 640};
 
 AssetManager* Game::assets = new AssetManager(&manager);
 MixerManager* mixer = new MixerManager;
-GUIManager* UI = new GUIManager(&manager);
 
 SDL_Color FGColor = { 255, 0, 0, 0 };
 SDL_Color BGColor = { 0, 0, 0, 0 };
