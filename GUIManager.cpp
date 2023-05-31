@@ -14,6 +14,7 @@ void GUIManager::newGUI(std::string id, bool isMenu)
 void GUIManager::newGUI(std::string id, bool isMenu, int sizeX, int sizeY)
 {
     GUIs.emplace(id, isMenu, sizeX, sizeY);
+    PLOGI << "New GUI created";
 }
 
 GUI* GUIManager::toggleMenu(std::string id)
