@@ -5,7 +5,7 @@
 #include <string>
 #include <map>
 #include "ECS/ECS.hpp"
-#include "Game.hpp"
+#include <plog/Log.h>
 
 class GUIManager
 {
@@ -22,24 +22,26 @@ class GUIManager
     private:
 
         Manager* manager;
-
-        std::map<std::string, GUI*> GUIs;
-
-
-        
-
 };
 
 class GUI
 {
     public:
 
-        std::string id;
-        bool isMenu;
+        std::string id = "";
+        bool isMenu = false;
         bool isShowing = false;
 
-        int sizeX;
-        int sizeY;
+        int sizeX = 0;
+        int sizeY = 0;
+
+        GUI();
+        ~GUI();
+
+        GUI(std::string id, bool isMenu);
+        GUI(std::string id, bool isMenu, int sizeX, int sizeY);
+
+        
 
         
 };

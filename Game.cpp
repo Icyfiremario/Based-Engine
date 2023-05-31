@@ -84,6 +84,8 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         //std::cout << "Error: SDL_Mixer" << std::endl;
         PLOGE << "Error: SDL_Mixer";
     }
+
+    SDL_ShowCursor(SDL_DISABLE);
     
 
     assets->AddTexture("terrain", "assets/terrain_ss.png");
