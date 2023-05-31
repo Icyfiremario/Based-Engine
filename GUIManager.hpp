@@ -17,7 +17,7 @@ class GUIManager
         void newGUI(std::string id, bool isMenu);
         void newGUI(std::string id, bool isMenu, int sizeX, int sizeY);
 
-        GUI* toggleMenu(std::string id);
+        void toggleMenu(std::string id);
 
     private:
 
@@ -36,6 +36,7 @@ class GUI
 
         std::string id;
         bool isMenu;
+        bool isShowing = false;
 
         int sizeX;
         int sizeY;

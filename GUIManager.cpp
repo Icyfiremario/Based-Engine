@@ -17,13 +17,24 @@ void GUIManager::newGUI(std::string id, bool isMenu, int sizeX, int sizeY)
     PLOGI << "New GUI created";
 }
 
-GUI* GUIManager::toggleMenu(std::string id)
+void GUIManager::toggleMenu(std::string id)
 {
     GUI* gui = GUIs[id];
 
     if(!gui->isMenu)
     {
-        PLOGI << "Menu Toggled";
+        gui->isShowing = !gui->isShowing;
+
+        if(gui->isShowing)
+        {
+            SDL_ShowCursor(SDL_ENABLE);
+        }
+        else
+        {
+            SDL_ShowCursor(SDL_DISABLE);
+        }
+
+        PLOGI << "Menu Toggled to: " << gui->isShowing;
     }
     else
     {
