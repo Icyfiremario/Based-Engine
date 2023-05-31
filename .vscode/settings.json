@@ -72,6 +72,8 @@
         "fstream": "cpp",
         "numbers": "cpp",
         "cinttypes": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "set": "cpp",
+        "iomanip": "cpp"
     }
 }
