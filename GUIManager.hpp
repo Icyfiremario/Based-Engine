@@ -7,6 +7,8 @@
 #include "ECS/ECS.hpp"
 #include <plog/Log.h>
 
+
+
 class GUIManager
 {
     public:
@@ -22,6 +24,7 @@ class GUIManager
     private:
 
         Manager* manager;
+        std::map<std::string, GUI*> GUIs;
 };
 
 class GUI
