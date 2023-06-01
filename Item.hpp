@@ -2,6 +2,7 @@
 #define Item_hpp
 
 #include <string>
+#include "TextureManager.hpp"
 
 class Item
 {
@@ -14,6 +15,8 @@ class Item
         
         int stackLimit;
         int amountHeld;
+
+        SDL_Texture* tex;
 
         Item();
         ~Item();

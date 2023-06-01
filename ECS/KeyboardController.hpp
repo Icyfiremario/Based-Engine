@@ -6,14 +6,12 @@
 #include "Components.hpp"
 #include "../MixerManager.hpp"
 #include <SDL2/SDL_gamecontroller.h>
-#include "WeaponComponent.hpp"
 
 class KeyboardController : public Component
 {
     public:
         TransformComponent *transform;
         SpriteComponent *sprite;
-        WeaponComponenet* weapons;
         MixerManager* mixer = new MixerManager;
         SDL_Joystick* controller = NULL;
 
@@ -21,7 +19,6 @@ class KeyboardController : public Component
         {
             transform = &entity->getComponent<TransformComponent>();
             sprite = &entity->getComponent<SpriteComponent>();
-            weapons = &entity->getComponent<WeaponComponenet>();
 
         }
 
@@ -100,7 +97,6 @@ class KeyboardController : public Component
                 if(SDL_JoystickGetButton(controller, 0))
                 {
                     std::cout << "B button pressed" << std::endl;
-                    entity->getComponent<WeaponComponenet>().UseWeapon(true);
                 }
                 if(SDL_JoystickGetButton(controller, 1))
                 {

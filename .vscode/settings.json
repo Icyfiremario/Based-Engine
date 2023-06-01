@@ -4,6 +4,11 @@
             "cwd": "c:\\Users\\robmr\\Desktop\\James\\Dev\\Code\\C++\\SDL2 game",
             "binaryPath": "c:\\Users\\robmr\\Desktop\\James\\Dev\\Code\\C++\\SDL2 game\\game",
             "binaryArgs": []
+        },
+        {
+            "cwd": "home:\\robmr\\Desktop\\James\\Dev\\Code\\C++\\SDL2 game",
+            "binaryPath": "home:\\robmr\\Desktop\\James\\Dev\\Code\\C++\\SDL2 game\\home:\\robmr\\Desktop\\James\\Dev\\Code\\C++\\SDL2 game\\a.out",
+            "binaryArgs": []
         }
     ],
     "cmake.configureOnOpen": true,

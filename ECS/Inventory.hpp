@@ -6,6 +6,7 @@
 #include "Components.hpp"
 #include "../Item.hpp"
 
+//Handles the items in the inventory
 class Inventory : public Component
 {
     public:
@@ -27,16 +28,17 @@ class Inventory : public Component
 
         }
 
-        void addItem(std::string id, Item* item)
+        bool addItem(std::string id, Item* item)
         {
             if(sizeof(invItems) > maxItems)
             {
                 PLOGW << "Inventory full could not add item";
-                return;
+                return false;
             }
             else
             {
                 invItems.emplace(id, item);
+                return true;
             }
         }
     

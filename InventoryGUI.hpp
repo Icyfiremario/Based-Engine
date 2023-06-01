@@ -1,6 +1,6 @@
 #ifndef InventoryGUI_hpp
 #define InventoryGUI_hpp
 
-#include "Components.hpp"
+#include "ECS/Components.hpp"
 
 #endif /* InventoryGUI_hpp */

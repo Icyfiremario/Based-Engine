@@ -104,10 +104,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("player");
     player.addComponent<StatsComponent>(20, 0, 10, true);
-    player.addComponent<WeaponComponenet>(20, 999, 2, "Laser");
     player.addComponent<Inventory>(true);
-    //player.addComponent<StatsUI>();
-    //player.getComponent<StatsUI>().HPBar(10, 35, 128, 32, FGColor, BGColor);
     player.addGroup(groupPlayers);
 
     SDL_Color white = {255, 255, 255, 255};

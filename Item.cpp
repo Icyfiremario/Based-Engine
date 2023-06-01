@@ -19,8 +19,4 @@ Item::Item(std::string id, bool grabable, bool weapon, bool stackable, int stack
         //Create new weapon with new wepon class. TODO make weapon class and change weapon component to use weapon class
     }
 
-    if(grabable)
-    {
-        //add it to the inventory, if cannot be added to the inventory wait 5 seconds untill trying again
-    }
 }

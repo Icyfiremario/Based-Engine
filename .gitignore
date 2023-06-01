@@ -1,3 +1,5 @@
 *.exe
 *.log
 *.rc
+*.tmp
+*.o
