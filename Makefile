@@ -12,7 +12,7 @@ LINKEDLIBS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 
 all: generateEXE clean
 
-generateEXE: generateCodeObj generateResourcesObj
+generateEXE: generateResourcesObj generateCodeObj
 	$(CXX) $(CFLAGS) $(OBJ) $(COMPRESOURCES) $(LINKEDLIBS) -o 'Wheatly Crab the game'
 
 generateCodeObj: 
