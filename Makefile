@@ -1,6 +1,7 @@
 .PHONY: generateCodeObj generateResourcesObj generateEXE clean deepclean
 
 CXX := g++
+RC := RC
 CFLAGS := -g -Wall -m64
 
 CODE = $(wildcard *.cpp) $(wildcard ECS/*.cpp)
@@ -12,17 +13,17 @@ LINKEDLIBS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 all: generateEXE clean
 
 generateEXE: generateCodeObj generateResourcesObj
-	$(CXX) $(CFLAGS) $(OBJ) $(LINKEDLIBS) -o 'Wheatly Crab the game'
+	$(CXX) $(CFLAGS) $(OBJ) $(COMPRESOURCES) $(LINKEDLIBS) -o 'Wheatly Crab the game'
 
 generateCodeObj: 
 	$(CXX) -c $(CODE)
 
-generateResourcesObj:
-	windres $(RESOURCES) -O coff -o resources.o
+generateResourcesObj: $(RESOURCES)
+	$(RC) $(RESOURCES)
 
 
 clean:
-	rm *.o
+	rm *.o *.res
 
 deepclean:
-	rm *.o *.exe
+	rm *.o *.res *.exe
