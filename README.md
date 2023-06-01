@@ -19,7 +19,7 @@ Make
 
 g++
 
-C++ IDE (I Use vscode or visual stuido community)
+C++ IDE (I Use vscode or visual studio community)
 
 # How to Use
 
