@@ -4,14 +4,15 @@
 #include <string>
 #include <map>
 #include "Components.hpp"
-#include "./Item.hpp"
-#include "./LimitedMap.hpp"
+#include "../Item.hpp"
 
 class Inventory : public Component
 {
     public:
 
         bool isPlayer;
+
+        int maxItems = 20;
         
         Inventory(){}
         ~Inventory(){}
@@ -28,12 +29,20 @@ class Inventory : public Component
 
         void addItem(std::string id, Item* item)
         {
-            
+            if(sizeof(invItems) > maxItems)
+            {
+                PLOGW << "Inventory full could not add item";
+                return;
+            }
+            else
+            {
+                invItems.emplace(id, item);
+            }
         }
     
     private:
 
-        //LimitedMap<std::string, Item*> Items;
+        std::map<std::string, Item*> invItems;
 
 };
 

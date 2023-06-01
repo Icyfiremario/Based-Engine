@@ -21,6 +21,6 @@ Item::Item(std::string id, bool grabable, bool weapon, bool stackable, int stack
 
     if(grabable)
     {
-        
+        //add it to the inventory, if cannot be added to the inventory wait 5 seconds untill trying again
     }
 }
