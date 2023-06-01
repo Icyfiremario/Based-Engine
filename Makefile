@@ -3,8 +3,6 @@
 CXX := g++
 CFLAGS := -g -Wall -m64
 
-
-
 CODE = $(wildcard *.cpp) $(wildcard ECS/*.cpp)
 OBJ = $(wildcard *.o)
 RESOURCES = $(wildcard *.rc)
