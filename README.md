@@ -28,3 +28,5 @@ C++ IDE [^1]
 Clone the Repository into a folder and begin editing code to fit your games needs. 
 
 VS Code is reccomended for easy quick editing.
+
+##Footnotes
