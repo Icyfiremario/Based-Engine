@@ -19,7 +19,7 @@ Make
 
 g++
 
-C++ IDE (I Use vscode or visual studio community)
+C++ IDE I Use vscode. Please do not use visual studio uless you want to take the time to resort the directorys so that it compiles properly. This is something I will do in the future, most likely after I have finished the basic engine features.
 
 # How to Use
 
