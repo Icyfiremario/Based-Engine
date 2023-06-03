@@ -17,8 +17,8 @@ Art by Mobsik
 
 - [ ] Edit the makefile to support different operating systems
 - [ ] Finish the item and weapon classes
-- [ ] make GUIs for thr invemtrory and paise menu
-- [ ] enemy AI
+- [ ] make GUIs for the inventory and pause menu
+- [ ] enemy AI presets (walking enemy, ranged enemy, boss, etc)
 
 # Use Requirements
 
