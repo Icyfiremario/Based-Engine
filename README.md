@@ -13,6 +13,13 @@ Code by me
 
 Art by Mobsik
 
+# Todo
+
+- [] Edit the makefile to support different operating systems
+- [] Finish the item and weapon classes
+- [] make GUIs for thr invemtrory and paise menu
+- [] enemy AI
+
 # Use Requirements
 
 Make
