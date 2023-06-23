@@ -15,7 +15,6 @@ Art by Mobsik
 
 # Todo
 
-- [ ] Edit the makefile to support different operating systems
 - [ ] Finish the item and weapon classes
 - [ ] make GUIs for the inventory and pause menu
 - [ ] enemy AI presets (walking enemy, ranged enemy, boss, etc)
@@ -25,6 +24,8 @@ Art by Mobsik
 Make
 
 g++
+
+SDL2 libraries (Image, Mixer, Fonts)
 
 C++ IDE [^1]
 
