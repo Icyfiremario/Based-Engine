@@ -13,7 +13,7 @@ class Inventory : public Component
 
         bool isPlayer;
 
-        int maxItems = 20;
+        size_t maxItems = 20;
         
         Inventory(){}
         ~Inventory(){}

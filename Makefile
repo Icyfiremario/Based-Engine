@@ -1,4 +1,4 @@
-.PHONY: clean realclean rebuild
+.PHONY: clean realclean rebuild objbuild
 
 TARGET = based-engine
 
@@ -33,3 +33,5 @@ realclean: clean
 
 rebuild:
 	$(CXX) $(CXXFLAGS) $(OBJ) $(RES) $(LKFLAGS) -o $(TARGET)
+
+objbuild: $(OBJ)
