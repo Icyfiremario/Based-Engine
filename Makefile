@@ -1,29 +1,32 @@
-.PHONY: generateCodeObj generateResourcesObj generateEXE clean deepclean
+.PHONY: clean realclean rebuild
 
-CXX := g++
-RC := RC
-CFLAGS := -g -Wall -m64
+TARGET = based-engine
 
-CODE = $(wildcard *.cpp) $(wildcard ECS/*.cpp)
-OBJ = $(wildcard *.o)
-RESOURCES = $(wildcard *.rc)
-LINKEDLIBS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+CXX = g++
+CXXFLAGS = -g -m64
+LKFLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 
+SRC := $(wildcard *.cpp) $(wildcard ECS/*.cpp)
+HDR := $(wildcard *.hpp) $(wildcard ECS/*.hpp)
+OBJ := $(SRC:.cpp=.o)
+RES = $(wildcard *.res)
 
-all: generateEXE clean
+$(TARGET): $(OBJ) $(RES)
+	$(CXX) $(CXXFLAGS) $^ $(LKFLAGS) -o $@
 
-generateEXE: generateResourcesObj generateCodeObj
-	$(CXX) $(CFLAGS) $(OBJ) $(COMPRESOURCES) $(LINKEDLIBS) -o 'Wheatly Crab the game'
+%.o: %.cpp $(HDR)
+	$(CXX) $(CXXFLAGS) -c $< $(LKFLAGS) -o $@
 
-generateCodeObj: 
-	$(CXX) -c $(CODE)
-
-generateResourcesObj: $(RESOURCES)
-	$(RC) $(RESOURCES)
-
+%.res: %.rc
+	@rc /r $^
 
 clean:
-	rm *.o *.res
+	@del %.o
+	@echo Removed obj files
 
-deepclean:
-	rm *.o *.res *.exe
+realclean: clean
+	@del $(TARGET).exe
+	@echo Removed binary
+
+rebuild:
+	$(CXX) $(CXXFLAGS) $(OBJ) $(RES) $(LKFLAGS) -o $(TARGET)
