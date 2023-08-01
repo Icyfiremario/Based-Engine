@@ -57,7 +57,7 @@ class WeaponManager
         std::map<std::string, Weapon*> Weapons;
         Inventory* inventory = nullptr;
 
-        bool checkHeld();
+        bool checkHeld(std::string id);
 };
 
 #endif /* Weapons_hpp */

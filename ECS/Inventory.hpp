@@ -41,6 +41,18 @@ class Inventory : public Component
                 return true;
             }
         }
+
+        bool checkHeld(std::string id)
+        {
+            if(invItems.count(id))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     
     private:
 

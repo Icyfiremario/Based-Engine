@@ -15,3 +15,15 @@ WeaponManager::WeaponManager(Inventory *inv) : inventory(inv)
 WeaponManager::~WeaponManager()
 {
 }
+
+bool WeaponManager::checkHeld(std::string id)
+{
+    if(inventory->checkHeld(id))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
