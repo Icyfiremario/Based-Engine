@@ -22,8 +22,10 @@ $(TARGET): $(OBJ) $(RES)
 	@windres $^ -O coff -o $@
 
 clean:
-	@del %.o
+	@del $(OBJ)
 	@echo Removed obj files
+	@del $(RES)
+	@echo Removed resource files
 
 realclean: clean
 	@del $(TARGET).exe
