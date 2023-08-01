@@ -218,5 +218,5 @@ void Game::clean()
     Mix_CloseAudio();
     SDL_Quit();
     //std::cout << "Game cleaned" << std::endl;
-    PLOGI << "Game cleaned";
+    PLOGI << "Game cleaned!";
 }
