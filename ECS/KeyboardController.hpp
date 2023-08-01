@@ -19,7 +19,6 @@ class KeyboardController : public Component
         {
             transform = &entity->getComponent<TransformComponent>();
             sprite = &entity->getComponent<SpriteComponent>();
-
         }
 
         void update() override
@@ -145,20 +144,22 @@ class KeyboardController : public Component
                     }   
                 }
             }
-            
         }
     
     private:
 
         void SetUpController()
         {
-            if(SDL_NumJoysticks == 0)
+
+            int numJoysticks = SDL_NumJoysticks();
+
+            if(numJoysticks == 0)
             {
                 std::cout << "Controller disconnected!" << std::endl;
             }
             else
             {
-                for(int i = 0; i < SDL_NumJoysticks(); i++)
+                for(int i = 0; i < numJoysticks; i++)
                 {
                     if(SDL_IsGameController(i))
                     {
@@ -173,12 +174,7 @@ class KeyboardController : public Component
                 }
             
             }
-            
-            
         }
-
-
-    
 };
 
 #endif /* Keyboardcontroller_hpp */

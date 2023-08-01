@@ -4,6 +4,7 @@
 #include "ECS.hpp"
 #include "Components.hpp"
 #include "../Vector2D.hpp"
+#include <plog/Log.h>
 
 class ProjectileComponent : public Component
 {
@@ -26,12 +27,12 @@ class ProjectileComponent : public Component
 
             if(distance > range)
             {
-                std::cout << "Out of range" << std::endl;
+                PLOGI << "Out of range";
                 entity->destroy();
             }
             else if (transform->posititon.x > Game::camera.x + Game::camera.w || transform->posititon.x < Game::camera.x || transform->posititon.y > Game::camera.y + Game::camera.h || transform->posititon.y < Game::camera.y)
             {
-                std::cout << "Out of bounds" << std::endl;
+                PLOGI << "Out of bounds";
                 entity->destroy();
             }
 

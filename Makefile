@@ -3,7 +3,7 @@
 TARGET = based-engine
 
 CXX = g++
-CXXFLAGS = -g -m64
+CXXFLAGS = -g -m64 -Wall
 LKFLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 
 SRC := $(wildcard *.cpp) $(wildcard ECS/*.cpp)
