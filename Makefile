@@ -22,13 +22,13 @@ $(TARGET): $(OBJ) $(RES)
 	@windres $^ -O coff -o $@
 
 clean:
-	@del $(OBJ)
+	@del /S /Q *.o
 	@echo Removed obj files
-	@del $(RES)
+	@del /S /Q *.res
 	@echo Removed resource files
 
 realclean: clean
-	@del $(TARGET).exe
+	@del /Q $(TARGET).exe
 	@echo Removed binary
 
 rebuild:
