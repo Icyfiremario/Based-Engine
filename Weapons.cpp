@@ -1,8 +1,18 @@
 #include "Weapons.hpp"
 
-Weapon::Weapon(std::string id, float dmg, bool ranged, const char* path) : weaponId(id), damage(dmg), ranged(ranged)
+Weapon::Weapon(float dmg, bool ranged, const char *texPath)
 {
-    TextureManager::LoadTexture(path);
+    if(ranged)
+    {
+        Id = "rangedWeapon";
+    }
+    else
+    {
+        Id = "meleeWeapon";
+    }
+
+    stackLimit = 1;
+    
 }
 
 Weapon::~Weapon()
@@ -16,6 +26,25 @@ WeaponManager::~WeaponManager()
 {
 }
 
+void WeaponManager::useWeapon(std::string id)
+{
+    Weapon* wep = WeaponManager::getWeapon(id);
+    if(wep == nullptr)
+    {
+        PLOGI << "Weapon not avaible";
+        return;
+    }
+
+    if(wep->ranged)
+    {
+        //do ranged things
+        return;
+    }
+
+    //do melee things
+    return;
+}
+
 bool WeaponManager::checkHeld(std::string id)
 {
     if(inventory->checkHeld(id))
@@ -25,5 +54,17 @@ bool WeaponManager::checkHeld(std::string id)
     else
     {
         return false;
+    }
+}
+
+Weapon *WeaponManager::getWeapon(std::string id)
+{
+    if(checkHeld(id))
+    {
+        
+    }
+    else
+    {
+        return nullptr;
     }
 }

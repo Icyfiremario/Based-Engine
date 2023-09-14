@@ -8,10 +8,8 @@ class Item
 {
     public:
         
-        std::string id;
-        bool grabable;
-        bool stackable;
-        bool weapon;
+        std::string Id;
+        bool grabbable;
         
         int stackLimit;
         int amountHeld;
@@ -21,7 +19,7 @@ class Item
         Item();
         ~Item();
 
-        Item(std::string id, bool grabable, bool weapon, bool stackable, int stackLimit);
+        Item(std::string id, bool grabbable, bool stackable, int stackLimit);
 
 };
 

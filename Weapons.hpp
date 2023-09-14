@@ -5,27 +5,27 @@
 #include "SDL2/SDL.h"
 #include "TextureManager.hpp"
 #include "ECS/Inventory.hpp"
+#include "Item.hpp"
 
 
-//Defines the properties of a weapon
-class Weapon
+//Defines the properties of a weapon which extends the Item class
+class Weapon : public Item
 {
     public:
 
-        std::string weaponId;
         float damage;
         bool ranged;
 
         SDL_Texture* tex;
 
-        Weapon(std::string id, float dmg, bool ranged, const char* path);
+        Weapon(float dmg, bool ranged, const char* texPath);
         ~Weapon();
 
-        bool isRanged() {return ranged;}
+        bool isRanged() { return ranged; }
 
 };
 
-//Manages the weapons made
+//Manages the weapons made in the provided inventory
 class WeaponManager
 {
     public:
@@ -33,31 +33,14 @@ class WeaponManager
         WeaponManager(Inventory* inv);
         ~WeaponManager();
 
-        void useWeapon(std::string id)
-        {
-            Weapon* selWeapon = Weapons[id];
-
-            if(selWeapon->isRanged())
-            {
-                //do ranged things
-            }
-            else
-            {
-                //do melee things
-            }
-        }
-        
-        void addWeapon(std::string id, Weapon* weapon)
-        {
-            Weapons.emplace(id, weapon);
-        }
+        void useWeapon(std::string id);
 
     private:
 
-        std::map<std::string, Weapon*> Weapons;
         Inventory* inventory = nullptr;
 
         bool checkHeld(std::string id);
+        Weapon* getWeapon(std::string id);
 };
 
 #endif /* Weapons_hpp */

@@ -2,21 +2,25 @@
 #include "ECS/Components.hpp"
 
 Item::Item()
-{}
+{
+}
+
 Item::~Item()
 {}
 
-Item::Item(std::string id, bool grabable, bool weapon, bool stackable, int stackLimit)
+Item::Item(std::string id, bool grabbable, bool stackable, int stackLimit) : Id(id), grabbable(grabbable)
 {
-    Item::id = id;
-    Item::grabable = grabable;
-    Item::weapon = weapon;
-    Item::stackable = stackable;
-    Item::stackLimit = stackLimit;
-
-    if(weapon)
+    if(stackable)
     {
-        //Create new weapon with new wepon class. TODO make weapon class and change weapon component to use weapon class
+        Item::stackLimit = 1;
+    }
+    else
+    {
+        Item::stackLimit = stackLimit;
     }
 
+    if(grabbable)
+    {
+        //do stuff to make grabbable
+    }
 }

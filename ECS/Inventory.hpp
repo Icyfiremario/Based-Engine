@@ -30,16 +30,21 @@ class Inventory : public Component
 
         bool addItem(std::string id, Item* item)
         {
-            if(sizeof(invItems) > maxItems)
+            if(sizeof(invItems) == maxItems)
             {
-                PLOGW << "Inventory full could not add item";
+                PLOGI << "Inventory full could not add item";
                 return false;
             }
-            else
+
+            if(invItems[id]->amountHeld == invItems[id]->stackLimit)
             {
-                invItems.emplace(id, item);
-                return true;
+                PLOGI << "Max amout of " << id << " held";
+                return false;
             }
+
+            invItems.emplace(id, item);
+            return true;
+            
         }
 
         bool checkHeld(std::string id)
@@ -53,15 +58,21 @@ class Inventory : public Component
                 return false;
             }
         }
+
+        Item* getItem(std::string id)
+        {
+            if(!checkHeld(id))
+            {
+                return nullptr;
+            }
+            
+            return invItems[id];
+        }
     
     private:
 
         std::map<std::string, Item*> invItems;
 
 };
-
-
-
-
 
 #endif /* Inventory_hpp */
