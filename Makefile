@@ -3,7 +3,7 @@
 TARGET = based-engine
 
 CXX = g++
-CXXFLAGS = -g -m64 -Wall
+CXXFLAGS = -g -m64 -Wall -Wpedantic
 LKFLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 
 SRC := $(wildcard *.cpp) $(wildcard ECS/*.cpp)
@@ -22,13 +22,13 @@ $(TARGET): $(OBJ) $(RES)
 	@windres $^ -O coff -o $@
 
 clean:
-	@del /S /Q *.o
+	@rm -f $(OBJ)
 	@echo Removed obj files
-	@del /S /Q *.res
+	@rm -f $(RC)
 	@echo Removed resource files
 
 realclean: clean
-	@del /Q $(TARGET).exe
+	@rm -f $(TARGET).exe
 	@echo Removed binary
 
 rebuild:
